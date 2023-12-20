@@ -25,17 +25,17 @@ def generate_and_play_speech(text):
     # 设置语音文件路径
     relative_path = "../tmp/tmp.mp3"
     speech_file_path = (Path(__file__).parent / relative_path).resolve()
-    # print(relative_path)
+    print(relative_path)
     # 使用 OpenAI 创建语音
     response = client.audio.speech.create(
         model="tts-1",
         voice="onyx",  # 可以选择 'onyx', 'nova' 等
         input=text
     )
-    response.stream_to_file(file_path)
+    response.stream_to_file(speech_file_path)
 
     # 初始化播放器
-    pygame.mixer.init()
+    # pygame.mixer.init()
 
     # 延迟播放
     # time.sleep(2)  # 在播放前暂停
@@ -50,5 +50,6 @@ def generate_and_play_speech(text):
 
     # 确保音乐播放完全释放文件
     pygame.mixer.music.unload()
+    return speech_file_path
 
 

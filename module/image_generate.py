@@ -24,7 +24,7 @@ def ImageGenerate2(descriptions):
                 "content": f"整合{descriptions}成一個完整的句子 全中文"
             }
         ],
-        max_tokens=200,
+        max_tokens=250,
     )
     # print(translate_text)
     wear_desc = desc_response.choices[0].message.content
